@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>&#9835; Spotify Web Player &#9836;</title>
+  <link rel="icon" href="spotfav.webp" type="image/webm"></link>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main>
+    <div id="app">
+      <a href="player.html" class="link-def" rel="alternate noreferrer"><h1>Spotify Web Player</h1></a>
+      <span id="albumCoverbackground" class="gradient-background"></span>
+      <div class="player">
+        <div class="track-container">
+          <div id="img-container"><img id="track-cover" src="where.webp" alt="Album cover" /></div>
+          <div class="track-info">
+            <div id="track-name"></div>
+            <div id="track-artist"></div>
+            <span></span>
+            <div>
+              <span id="song-current-time"></span>
+              <span id="song-end-time"></span>
+            </div>
+          </div>
+        </div>
+        <input type="range" id="seek-range" min="0" max="200" value="0" data-time="0">
+        <div class="playback-controls">
+          <button class="btn-spotify" id="prev-btn" alt="&#8884;">&#9198;</button>
+          <button class="btn-spotify" id="play-pause-btn">&#10711;</button>
+          <button class="btn-spotify" id="next-btn" alt="&#8885;">&#9197;</button>
+        </div>
+        <input type="range" id="volume-bar" min="0" max="100" value="0">
+      </div>
+      <div id="player-system-controls">
+        <button class="btn-spotify" id="connect-btn" title="Reconnect">&#8635;</button><!--Connect to Spotify-->
+        <button class="btn-spotify" id="disconnect-btn" title="Disconnect">&#9167;</button><!--Disconnect from Spotify-->
+        <div id="devices">
+          <h3>Available Devices</h3>
+          <select id="deviceSelect" class="btn-spotify" title="Select a player">
+            <option value="" disabled selected>Select a device</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="https://sdk.scdn.co/spotify-player.js" async></script>
+  <script src="spotify-player.js" async></script>
+</body>
+</html>

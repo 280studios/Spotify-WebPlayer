@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Spotify Authentication</title>
+  <link rel="icon" href="favicon.png" type="image/png"></link>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="start-login">
+    <a href="index.html" class="link-def" rel="alternate, noreferrer"><h1>Spotify Web Player</h1></a>
+    <p class="info-text">Click the button below to log in with your Spotify account.</p>
+    <p class="info-text">Press <kbd>F</kbd> to toggle fullscreen and <kbd>Space</kbd> to play/pause (<small>When Web Player is active</small>).</p>
+    <button id="loginButton" class="btn-spotify">Login with Spotify</button>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const loginButton = document.getElementById('loginButton');
+
+      loginButton.addEventListener('click', function() {
+        window.location.href = 'callback.php';
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,254 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #282a29;
+  color: #141414;
+}
+
+body:fullscreen main,
+body[fullscreen] main {
+  background-color: #090909;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  overflow: clip;
+}
+
+.link-def, .link-def:visited {
+  text-align: center;
+  color: #d7e2d5;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  letter-spacing: 0.1em;
+}
+.link-def:hover {
+  color: #deffdd;
+}
+.link-def:active {
+  color: #37c36d;
+}
+.start-login {
+  text-align: center;
+}
+
+.info-text {
+  color: #d7e2d5;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+.info-text kbd {
+  color: #aced9f;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+.info-text small {
+  color: #c1c3c0;
+}
+
+#app {
+  position: relative;
+  z-index: 1;
+}
+.player {
+  position: relative;
+  width: 350px;
+  margin: 10px auto;
+  padding: 20px 24px;
+  background-color: #d7e2d5;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 400px) {
+  .player {
+    width: calc(100% - 50px);
+  }
+  .player #img-container {
+    display: flex;
+    align-items: center;
+  }
+  .player #track-cover {
+    width: 40vw;
+    height: auto;
+    max-width: 130px;
+    max-height: 130px;
+  }
+  .player .track-info {
+    width: 100%;
+  }
+}
+.track-container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr;
+  transition: all 0.3s ease;
+  height: 140px;
+}
+.track-info {
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  word-break: break-word;
+}
+.track-info a, a:visited {
+  text-decoration: none;
+  color: #141414;
+}
+#track-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+#track-artist {
+  padding-top: 4px;
+}
+.playback-controls {
+  margin: 0 auto;
+  text-align: center;
+}
+#track-cover {
+  margin-right:  10px;
+  width: 130px;
+  height: 130px;
+  background-color: transparent;
+  box-shadow: #494b49d4 2px 2px 10px;
+  transition: filter 0.4s ease-out;
+}
+#track-cover:hover {
+  filter: saturate(2) hue-rotate(7deg);
+  cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAYdEVYdFNvZnR3YXJlAFBhaW50Lk5FVCA1LjEuN4vW9zkAAAC2ZVhJZklJKgAIAAAABQAaAQUAAQAAAEoAAAAbAQUAAQAAAFIAAAAoAQMAAQAAAAIAAAAxAQIAEAAAAFoAAABphwQAAQAAAGoAAAAAAAAAYAAAAAEAAABgAAAAAQAAAFBhaW50Lk5FVCA1LjEuNwADAACQBwAEAAAAMDIzMAGgAwABAAAAAQAAAAWgBAABAAAAlAAAAAAAAAACAAEAAgAEAAAAUjk4AAIABwAEAAAAMDEwMAAAAAAlR56NozS1xQAAAqFJREFUOE+l081LVFEYBvDnnHvPvXfueGfGUUebLNQWKZiBlUVN4CohKWIg0GpTmxYFtbB/oE0Q2DbCRdEijCCiaBPUQjBq0UIysg+V1Kkh58tx5s7cj3NOC3MWjqt6ls/ix8t5zwv8Z8jWQh2DySIYaRo8n3Rorqns/vA1GoVldEEKCaOFmIpJXhGpTczFJxboVkDpQZB0xM7BKA2rAXmkwWpKmOFgggTsBA1WEwLVfghx0LSiYQCoA2hbl0pbop2K5QtmMl9lgTIhPCPU4lcSqCyAugDg6KYltgVI0JKKadl6IOozzfpYXSu/yHyfeVTMZG9xTzwglP2mVNEk59gWAARAAFXV0RBpvpM7Pj3qJFevR1rjD5mmf5ZCVIUQFGTj+eoACQkAIIoqqKp5m/XSzMuBXDo9JLmMEUo8ISrAJtD0/lhtG5XB2TznHockUmHMAxBunOob6+pP3o53dA9rAcsgUHwhhAQAFQCyh6elMbWvI9bcud8MN+5ZW001c7+qe47tqs8G+gyj+YaiaTHDCoP7AtxzlVI2o9cmAMA0yi4QQiZVzRgPx3btdF2bFvNLaAt3xxgiMd91wD0BQhVIATW9Mq/VAONx6BIjbJQyZiiqjmCoFcKTWF8vKiRlc561US2V4VZLKBdWUcz+sgvpuUINIKvFoFcu657nwOceOHdhrxWQWX4raHdIo+EAlJQJe3YdzlwFWKY/cSb9CQAUAMAhtFuR3qNEqK12KQ07nwXhQTToe183DvQ+qSz+nHe/pTPOei4Fj04wJXR/bXI2j9otXMXuHQeGRnzmnCr4M1HJZK6148QXzWq8u9h37wMA4Cx6aQ+i4ibeAXDbnyfJyumnGzv/mxC9iMHANVw2ruDkZhl/k6z7K+a4WXeE/5w/bP4R4W/RT6oAAAAASUVORK5CYII=), auto;
+}
+#filler {
+  background-color: transparent;
+}
+#filler::after {
+  content: '';
+}
+#song-end-time {
+  float: right;
+}
+.btn-spotify {
+  padding: 0.4em 0.6em;
+  background-color: #2ddd6b;
+  font-size: 1rem;
+  line-height: 1rem;
+  color: #141414;
+  border: 2px solid #141414;
+  border-radius: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.btn-spotify:hover {
+  background-color: #1DB954;
+}
+#connect-btn, #disconnect-btn, #prev-btn, #play-pause-btn, #next-btn {
+  font-size: 1.3rem;
+}
+
+#play-pause-btn,
+#next-btn,
+#prev-btn,
+#seek-range,
+#volume-bar {
+  display: none;
+}
+
+#seek-range {
+  width: 100%;
+}
+
+#volume-bar {
+  position: absolute;
+  transform: rotate(270deg);
+  transform-origin: 73px 0;
+  left: -70px;
+  top: 67px;
+  width: 132px;
+}
+
+#player-system-controls {
+  margin-top: 10px;
+  text-align: center;
+}
+#devices {
+  display: inline-block;
+}
+#devices select:hover {
+  -webkit-background-color: initial;
+  background-color: #2ddd6b;
+}
+#devices h3 {
+  margin: 0;
+  color: #d7e2d5;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  margin: 0.3rem auto;
+  width: 100%;
+}
+
+/* Chrome, Safari, Opera, and Edge Chromium */
+input[type=range]::-webkit-slider-runnable-track {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 0.5rem;
+  background-color: #2e2e2e;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  margin-top: -0.35rem;
+  background: #2ddd6b;
+  border: 2px solid #222323;
+  border-radius: 50%;
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
+/* Firefox */
+input[type=range]::-moz-range-track {
+  height: 0.5rem;
+  background-color: #2e2e2e;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+input[type=range]::-moz-range-thumb {
+  border: none;
+  background: #2ddd6b;
+  border: 2px solid #222323;
+  border-radius: 50%;
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+.gradient-background {
+  position: absolute;
+  top: 0;
+  width: 400px;
+  height: 400px;
+  max-height: 100%;
+  background-size: cover;
+  mask-image: radial-gradient(circle, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 63%);
+  -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 63%);
+  transition: all 0.4s ease-in-out;
+  filter: blur(2px);
+  z-index: -1;
+}
