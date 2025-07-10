@@ -81,6 +81,14 @@ if (isset($_GET['code']) && !empty($_GET['code']) && !isset($_SESSION['access_to
   exit;
 }
 
+// Handle logout action
+if (isset($_GET['action']) && $_GET['action'] == 'logout' && isset($_SESSION['access_token'])) {
+  unset($_SESSION['access_token']);
+  session_destroy();
+  http_response_code(200);
+  exit;
+}
+
 // Function to display error messages
 function errorMessage($message) {
   header('Content-Type: text/html; charset=UTF-8');

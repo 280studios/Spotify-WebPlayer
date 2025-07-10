@@ -467,6 +467,11 @@ async function resetSession(redirect = true) {
     controllerAbort.abort();
     sessionStorage.removeItem('spotifyAccessToken');
     sessionStorage.removeItem('localDeviceId');
+
+    const response = await fetch('callback.php?action=logout', { method: 'GET' });
+    if (!response.ok) {
+      throw new Error('Failed to logout: ' + response.status + ' ' + response.statusText);
+    }
     
     if (redirect) {
       window.location.href = "index.html";
@@ -693,6 +698,7 @@ async function getAndShowDevices(localDeviceId) {
       transferPlayback(selectedDeviceId);
     };
   } catch (error) {
+    resetSession(true);
     console.error('Failed to get devices:', error);
   }
 }
@@ -734,6 +740,9 @@ async function transferPlayback(deviceId) {
       });
 
       if (response.status === 204) {
+        if (deviceId !== currentDeviceId) {
+          playerUpdateUi('half');
+        }
         console.log('Playback transferred successfully to device:', deviceId);
       } else {
         console.error('Failed to transfer playback', response);
